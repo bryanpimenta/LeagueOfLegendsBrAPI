@@ -1,0 +1,421 @@
+# Build Folders
+bin/
+obj/
+out/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+.history/
+
+# JetBrains Rider
+.idea/
+
+# Rider logs
+*.iws
+.idea/
+.idea_modules/
+
+# Rider Gradle integration
+.gradle/
+build/
+
+# Rider: User-specific files
+*_personal.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/modules.xml
+.idea/runConfigurations.xml
+.idea/gradle.xml
+
+# Rider: Changelists
+.idea/changelists
+
+# Rider: File-based project format
+*.iws
+
+# Rider: Module-based project format
+.idea/modules.xml
+.idea/workspace.xml
+
+# Rider: Git support
+.idea/workspace.xml
+.idea/vcs.xml
+
+# Rider: Temporary files
+.idea/.idea_modules.xml
+.idea/.idea_temp
+.idea/repl
+.idea/ruby/karma.xml
+
+# Rider: Local History
+.idea/localHistory
+
+# Rider: Bookmarks
+.idea/bookmarks.xml
+
+# Rider: Local console
+.idea/terminal
+
+# Rider: Run Configurations
+.idea/runConfigurations
+
+# Rider: Deployment
+.idea/deployment.xml
+.idea/deploymentSettings.xml
+
+# Rider: Remote hosts access data
+.idea/remote-mappings
+
+# Rider: Active tool window
+.idea/window.state
+
+# Rider: SSL Keystore
+.idea/ssl_keystore
+
+# Rider: TypeScript Plug-ins support
+.idea/jsLanguageApplications
+.idea/applications.xml
+.idea/restService.xml
+
+# Rider: TypeScript Plug-ins configurations
+.idea/restServiceDevelopment.xml
+
+# Rider: Generated JavaScript source map
+.idea/js/karate/junit/java/java.js.map
+
+# Rider: Generated Go source map
+.idea/js/karate/junit/go/go.js.map
+
+# Rider: IdeaVim
+.idea/.vimrc
+
+# Rider: Vim
+.vim
+
+# Rider: ReSharper
+*.DotSettings.user
+
+# Rider: Solution Wide Analysis
+.idea/.dotCover
+
+# Rider: dotCover
+.idea/dotCover
+
+# Rider: TeamCity
+.idea/teamcity
+
+# Rider: Docker
+.idea/docker/
+
+# Rider: Angular CLI
+.idea/angular-cli
+
+# Rider: MongoDB
+.idea/mongodb
+
+# Rider: MSBuild
+.idea/msbuild
+
+# Rider: Custom Language Support
+.idea/lang-support
+
+# Rider: External Annotations
+.idea/external-annotations
+
+# Rider: NuGet
+.idea/nuget/
+
+# Rider: Unity
+.idea/Unity/ProjectSettings
+
+# Rider: Language Specific
+.idea/completion
+
+# Rider: CSharp
+.idea/csharp
+
+# Rider: Rider Platform
+.idea/rider-platform
+
+# Rider: Roslyn
+.idea/roslyn
+
+# Rider: F#
+.idea/fsharp
+
+# Rider: Java
+.idea/java
+
+# Rider: Android
+.idea/android
+
+# Rider: JavaScript
+.idea/javascript
+
+# Rider: TypeScript
+.idea/typescript
+
+# Rider: PhpStorm
+.idea/php
+
+# Rider: WebStorm
+.idea/webstorm
+
+# Rider: IntelliJ IDEA
+.idea/idea
+
+# Rider: RubyMine
+.idea/ruby
+
+# Rider: AppCode
+.idea/appcode
+
+# Rider: PyCharm
+.idea/pycharm
+
+# Rider: GoLand
+.idea/goland
+
+# Rider: CLion
+.idea/clion
+
+# Rider: DataGrip
+.idea/datagrip
+
+# Rider: DBE
+.idea/dbe
+
+# Rider: MPS
+.idea/mps
+
+# Rider: Android Studio
+.idea/android-studio
+
+# Rider: Rider-Unity
+.idea/unity
+
+# Rider: Unity-Editor
+.idea/unity-editor
+
+# Rider: Unity-Test-Runner
+.idea/unity-test-runner
+
+# Rider: Unity-Debugger
+.idea/unity-debugger
+
+# Rider: Unity-Profiler
+.idea/unity-profiler
+
+# Rider: Xcode
+.idea/xcode
+
+# Rider: Scratch
+.idea/scratch
+
+# Rider: Scratch-Pad
+.idea/scratch-pad
+
+# Rider: Scratch-Pad-List
+.idea/scratch-pad-list
+
+# Rider: Scratch-Pad-Tabs
+.idea/scratch-pad-tabs
+
+# Rider: Scratch-Pad-Views
+.idea/scratch-pad-views
+
+# Rider: Tasks
+.idea/tasks
+
+# Rider: Tasks-List
+.idea/tasks-list
+
+# Rider: Tasks-Tab
+.idea/tasks-tab
+
+# Rider: Tasks-Views
+.idea/tasks-views
+
+# Rider: Todo
+.idea/todo
+
+# Rider: Todo-List
+.idea/todo-list
+
+# Rider: Todo-Tabs
+.idea/todo-tabs
+
+# Rider: Todo-Views
+.idea/todo-views
+
+# Rider: Coverage
+.idea/coverage
+
+# Rider: Coverage-Reports
+.idea/coverage-reports
+
+# Rider: VCS
+.idea/vcs
+
+# Rider: VCS-List
+.idea/vcs-list
+
+# Rider: VCS-Tab
+.idea/vcs-tab
+
+# Rider: VCS-Views
+.idea/vcs-views
+
+# Rider: Service
+.idea/service
+
+# Rider: Service-List
+.idea/service-list
+
+# Rider: Service-Tabs
+.idea/service-tabs
+
+# Rider: Service-Views
+.idea/service-views
+
+# Rider: Service-Tabs-List
+.idea/service-tabs-list
+
+# Rider: Service-Tabs-Views
+.idea/service-tabs-views
+
+# Rider: Config
+.idea/config
+
+# Rider: Config-List
+.idea/config-list
+
+# Rider: Config-Tabs
+.idea/config-tabs
+
+# Rider: Config-Views
+.idea/config-views
+
+# Rider: Config-Tabs-List
+.idea/config-tabs-list
+
+# Rider: Config-Tabs-Views
+.idea/config-tabs-views
+
+# Rider: Tools
+.idea/tools
+
+# Rider: Tools-List
+.idea/tools-list
+
+# Rider: Tools-Tabs
+.idea/tools-tabs
+
+# Rider: Tools-Views
+.idea/tools-views
+
+# Rider: Tools-Tabs-List
+.idea/tools-tabs-list
+
+# Rider: Tools-Tabs-Views
+.idea/tools-tabs-views
+
+# Rider: WSL
+.idea/wsl
+
+# Rider: WSL-List
+.idea/wsl-list
+
+# Rider: WSL-Tabs
+.idea/wsl-tabs
+
+# Rider: WSL-Views
+.idea/wsl-views
+
+# Rider: WSL-Tabs-List
+.idea/wsl-tabs-list
+
+# Rider: WSL-Tabs-Views
+.idea/wsl-tabs-views
+
+# Rider: Live-Templates
+.idea/live-templates
+
+# Rider: Live-Templates-List
+.idea/live-templates-list
+
+# Rider: Live-Templates-Tabs
+.idea/live-templates-tabs
+
+# Rider: Live-Templates-Views
+.idea/live-templates-views
+
+# Rider: Live-Templates-Tabs-List
+.idea/live-templates-tabs-list
+
+# Rider: Live-Templates-Tabs-Views
+.idea/live-templates-tabs-views
+
+# Rider: Live-Templates-Settings
+.idea/live-templates-settings
+
+# Rider: Live-Templates-List-Settings
+.idea/live-templates-list-settings
+
+# Rider: Live-Templates-Tabs-Settings
+.idea/live-templates-tabs-settings
+
+# Rider: Live-Templates-Views-Settings
+.idea/live-templates-views-settings
+
+# Rider: Live-Templates-Tabs-List-Settings
+.idea/live-templates-tabs-list-settings
+
+# Rider: Live-Templates-Tabs-Views-Settings
+.idea/live-templates-tabs-views-settings
+
+# Rider: Live-Templates-Settings-List
+.idea/live-templates-settings-list
+
+# Rider: Live-Templates-Settings-Tabs
+.idea/live-templates-settings-tabs
+
+# Rider: Live-Templates-Settings-Views
+.idea/live-templates-settings-views
+
+# Rider: Live-Templates-Settings-Tabs-List
+.idea/live-templates-settings-tabs-list
+
+# Rider: Live-Templates-Settings-Tabs-Views
+.idea/live-templates-settings-tabs-views
+
+# Rider: JetBrains Config
+.idea/jetbrains-config
+
+# Rider: JetBrains Config-List
+.idea/jetbrains-config-list
+
+# Rider: JetBrains Config-Tabs
+.idea/jetbrains-config-tabs
