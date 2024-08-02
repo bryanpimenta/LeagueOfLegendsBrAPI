@@ -19,19 +19,19 @@ namespace LeagueOfLegendsBrAPI.Controllers
             _context = context;
         }
 
-/*         [HttpGet("test-connection")]
-        public async Task<IActionResult> TestConnection()
-        {
-            try
-            {
-                var champions = await _context.Champions.ToListAsync();
-                return Ok(new { Message = "Database connection successful", ChampionsCount = champions.Count });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "Database connection failed", Error = ex.Message });
-            }
-        } */
+        /*         [HttpGet("test-connection")]
+                public async Task<IActionResult> TestConnection()
+                {
+                    try
+                    {
+                        var champions = await _context.Champions.ToListAsync();
+                        return Ok(new { Message = "Database connection successful", ChampionsCount = champions.Count });
+                    }
+                    catch (Exception ex)
+                    {
+                        return StatusCode(500, new { Message = "Database connection failed", Error = ex.Message });
+                    }
+                } */
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Champion>>> GetChampions()
@@ -39,10 +39,28 @@ namespace LeagueOfLegendsBrAPI.Controllers
             return await _context.Champion.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Champion>> GetChampion(string id)
+        [HttpGet("details")]
+        public async Task<List<Champion>> GetChampionsWithDetails()
         {
-            var champion = await _context.Champion.FindAsync(id);
+            return await _context.Champion
+                .Include(c => c.Info)
+                .Include(c => c.Stats)
+                .Include(c => c.Passive)
+                .Include(c => c.Spells)
+                .Include(c => c.Skins)
+                .ToListAsync();
+        }
+
+        [HttpGet("details/{name}")]
+        public async Task<ActionResult<Champion>> GetChampionByName(string name)
+        {
+            var champion = await _context.Champion
+                .Include(c => c.Info)
+                .Include(c => c.Stats)
+                .Include(c => c.Passive)
+                .Include(c => c.Spells)
+                .Include(c => c.Skins)
+                .FirstOrDefaultAsync(c => c.Name == name);
 
             if (champion == null)
             {
@@ -52,58 +70,75 @@ namespace LeagueOfLegendsBrAPI.Controllers
             return champion;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Champion>> PostChampion(Champion champion)
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Champion>> GetChampion(string id)
         {
-            _context.Champion.Add(champion);
-            await _context.SaveChangesAsync();
+            var champion = await _context.Champion
+                .Include(c => c.Skins)
+                .FirstOrDefaultAsync(c => c.Key == id);
 
-            return CreatedAtAction(nameof(GetChampion), new { id = champion.Key }, champion);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutChampion(string id, Champion champion)
-        {
-            if (id != champion.Key)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(champion).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChampionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteChampion(string id)
-        {
-            var champion = await _context.Champion.FindAsync(id);
             if (champion == null)
             {
                 return NotFound();
             }
 
-            _context.Champion.Remove(champion);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return champion;
         }
+
+
+        /*         [HttpPost]
+                public async Task<ActionResult<Champion>> PostChampion(Champion champion)
+                {
+                    _context.Champion.Add(champion);
+                    await _context.SaveChangesAsync();
+
+                    return CreatedAtAction(nameof(GetChampion), new { id = champion.Key }, champion);
+                }
+
+                [HttpPut("{id}")]
+                public async Task<IActionResult> PutChampion(string id, Champion champion)
+                {
+                    if (id != champion.Key)
+                    {
+                        return BadRequest();
+                    }
+
+                    _context.Entry(champion).State = EntityState.Modified;
+
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ChampionExists(id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+
+                    return NoContent();
+                }
+
+                [HttpDelete("{id}")]
+                public async Task<IActionResult> DeleteChampion(string id)
+                {
+                    var champion = await _context.Champion.FindAsync(id);
+                    if (champion == null)
+                    {
+                        return NotFound();
+                    }
+
+                    _context.Champion.Remove(champion);
+                    await _context.SaveChangesAsync();
+
+                    return NoContent();
+                } */
 
         private bool ChampionExists(string id)
         {

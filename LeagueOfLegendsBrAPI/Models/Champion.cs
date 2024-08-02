@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace LeagueOfLegendsBrAPI.Models
 {
@@ -15,10 +15,11 @@ namespace LeagueOfLegendsBrAPI.Models
         public string image_full { get; set; }
         public string image_loading { get; set; }
         public string image_square { get; set; }
-        public ICollection<ChampionSkin> Skins { get; set; }
         public ChampionInfo Info { get; set; }
-        public ChampionStats Stats { get; set; }
-        public ICollection<ChampionSpell> Spells { get; set; }
+        public ChampionStats Stats { get; set; } 
         public ChampionPassive Passive { get; set; }
+        public virtual ICollection<ChampionSpell> Spells { get; set; }
+        public virtual ICollection<ChampionSkin> Skins { get; set; }
+
     }
 }

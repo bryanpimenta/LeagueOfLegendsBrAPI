@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 namespace LeagueOfLegendsBrAPI.Models
 {
     public class ChampionStats
     {
+        [Key]
         public int Id { get; set; }
-        public string ChampionId { get; set; }
+        public string champion_id { get; set; }
         public int Hp { get; set; }
         public int HpPerLevel { get; set; }
         public int Mp { get; set; }
@@ -25,6 +28,7 @@ namespace LeagueOfLegendsBrAPI.Models
         public int AttackSpeedPerLevel { get; set; }
         public int AttackSpeed { get; set; }
 
+        [JsonIgnore]
         public Champion Champion { get; set; }
     }
 }
