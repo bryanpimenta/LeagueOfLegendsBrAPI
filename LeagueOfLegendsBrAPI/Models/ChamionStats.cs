@@ -6,7 +6,7 @@ namespace LeagueOfLegendsBrAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public string champion_id { get; set; }
+        public string Champion_id { get; set; }
         public int Hp { get; set; }
         public int HpPerLevel { get; set; }
         public int Mp { get; set; }

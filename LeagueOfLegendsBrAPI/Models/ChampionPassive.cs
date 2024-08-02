@@ -12,7 +12,7 @@ namespace LeagueOfLegendsBrAPI.Models
         public string Image { get; set; }
 
         [ForeignKey("champion_id")]     
-        public string champion_id { get; set; }
+        public string Champion_id { get; set; }
 
         [JsonIgnore]
         public Champion Champion { get; set; }

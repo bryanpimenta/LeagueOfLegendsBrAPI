@@ -15,6 +15,17 @@ public class Startup
         services.AddDbContext<LeagueOfLegendsContext>(options =>
             options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
+        services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllOrigins", builder =>
+        {
+            builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+        });
+    });
+
         services.AddControllers();
     }
 
@@ -24,6 +35,16 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
+            app.UseCors("AllowAllOrigins");
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
 
         app.UseRouting();
 

@@ -27,43 +27,43 @@ namespace LeagueOfLegendsBrAPI.Data
             modelBuilder.Entity<ChampionSkin>()
                 .HasOne(cs => cs.Champion)
                 .WithMany(c => c.Skins)
-                .HasForeignKey(cs => cs.champion_id)
+                .HasForeignKey(cs => cs.Champion_id)
                 .HasPrincipalKey(c => c.Key);
 
             modelBuilder.Entity<ChampionInfo>()
-                .HasKey(ci => ci.champion_id);
+                .HasKey(ci => ci.Champion_id);
 
             modelBuilder.Entity<ChampionStats>()
-                .HasKey(cs => cs.champion_id);
+                .HasKey(cs => cs.Champion_id);
 
             modelBuilder.Entity<ChampionSpell>()
                 .HasOne(cs => cs.Champion)
                 .WithMany(c => c.Spells)
-                .HasForeignKey(cs => cs.champion_id)
+                .HasForeignKey(cs => cs.Champion_id)
                 .HasPrincipalKey(c => c.Key);
 
             modelBuilder.Entity<ChampionPassive>()
-                .HasKey(cp => cp.champion_id);
+                .HasKey(cp => cp.Champion_id);
 
             modelBuilder.Entity<Champion>()
                 .HasOne(c => c.Info)
                 .WithOne(i => i.Champion)
-                .HasForeignKey<ChampionInfo>(i => i.champion_id);
+                .HasForeignKey<ChampionInfo>(i => i.Champion_id);
 
             modelBuilder.Entity<Champion>()
                 .HasOne(c => c.Stats)
                 .WithOne(s => s.Champion)
-                .HasForeignKey<ChampionStats>(s => s.champion_id);
+                .HasForeignKey<ChampionStats>(s => s.Champion_id);
 
             modelBuilder.Entity<Champion>()
                 .HasMany(c => c.Spells)
                 .WithOne(s => s.Champion)
-                .HasForeignKey(s => s.champion_id);
+                .HasForeignKey(s => s.Champion_id);
 
             modelBuilder.Entity<Champion>()
                 .HasOne(c => c.Passive)
                 .WithOne(p => p.Champion)
-                .HasForeignKey<ChampionPassive>(p => p.champion_id);
+                .HasForeignKey<ChampionPassive>(p => p.Champion_id);
         }
 
     }
