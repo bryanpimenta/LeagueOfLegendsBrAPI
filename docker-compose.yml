@@ -1,0 +1,26 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: killjoy
+      MYSQL_DATABASE: LeagueOfLegendsDataBase
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./database/patch_14.15.1.sql:/docker-entrypoint-initdb.d/patch_14.15.1.sql
+    restart: on-failure
+
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__LeagueOfLegendsDatabase: "Server=db;Database=LeagueOfLegendsDataBase;User=root;Password=killjoy;"
+    ports:
+      - "5050:5050"
+    restart: on-failure
+
+volumes:
+  db-data:
