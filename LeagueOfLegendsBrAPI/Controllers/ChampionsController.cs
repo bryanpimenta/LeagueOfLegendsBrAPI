@@ -32,15 +32,15 @@ namespace LeagueOfLegendsBrAPI.Controllers
                         return StatusCode(500, new { Message = "Database connection failed", Error = ex.Message });
                     }
                 } */
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Champion>>> GetChampions()
         {
-            return await _context.Champion.ToListAsync();
+            return await _context.Champion
+                .ToListAsync();
         }
 
-        [HttpGet("details")]
-        public async Task<List<Champion>> GetChampionsWithDetails()
+        [HttpGet("full")]
+        public async Task<ActionResult<IEnumerable<Champion>>> GetChampionsFull()
         {
             return await _context.Champion
                 .Include(c => c.Info)
@@ -51,7 +51,7 @@ namespace LeagueOfLegendsBrAPI.Controllers
                 .ToListAsync();
         }
 
-        [HttpGet("details/{name}")]
+        [HttpGet("byName/{name}")]
         public async Task<ActionResult<Champion>> GetChampionByName(string name)
         {
             var champion = await _context.Champion
@@ -70,11 +70,34 @@ namespace LeagueOfLegendsBrAPI.Controllers
             return champion;
         }
 
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Champion>> GetChampion(string id)
+        [HttpGet("full/{name}")]
+        public async Task<ActionResult<Champion>> GetChampionFullByName(string name)
         {
             var champion = await _context.Champion
+                .Include(c => c.Info)
+                .Include(c => c.Stats)
+                .Include(c => c.Passive)
+                .Include(c => c.Spells)
+                .Include(c => c.Skins)
+                .FirstOrDefaultAsync(c => c.Name == name);
+
+            if (champion == null)
+            {
+                return NotFound();
+            }
+
+            return champion;
+        }
+
+
+        [HttpGet("byId/{id}")]
+        public async Task<ActionResult<Champion>> GetChampionById(string id)
+        {
+            var champion = await _context.Champion
+                .Include(c => c.Info)
+                .Include(c => c.Stats)
+                .Include(c => c.Passive)
+                .Include(c => c.Spells)
                 .Include(c => c.Skins)
                 .FirstOrDefaultAsync(c => c.Key == id);
 

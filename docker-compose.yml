@@ -4,15 +4,25 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: killjoy
       MYSQL_DATABASE: LeagueOfLegendsDataBase
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
       - ./database/patch_14.15.1.sql:/docker-entrypoint-initdb.d/patch_14.15.1.sql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     restart: on-failure
 
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - .:/app/publish
+    working_dir: /app
+    command: dotnet watch run
     depends_on:
       - db
     environment:

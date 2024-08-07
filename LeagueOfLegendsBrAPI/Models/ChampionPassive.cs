@@ -6,15 +6,15 @@ namespace LeagueOfLegendsBrAPI.Models
     public class ChampionPassive
     {
         [Key]
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
+        public int? Id { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Image { get; set; }
 
         [ForeignKey("champion_id")]     
-        public string Champion_id { get; set; }
+        public string? Champion_id { get; set; }
 
         [JsonIgnore]
-        public Champion Champion { get; set; }
+        public Champion? Champion { get; set; }
     }
 }
