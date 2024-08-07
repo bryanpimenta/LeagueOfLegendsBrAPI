@@ -69,6 +69,7 @@ public async Task<ActionResult<IEnumerable<ChampionDto>>> GetChampions()
                 Armor = c.Stats.Armor,
                 ArmorPerLevel = c.Stats.ArmorperLevel,
                 SpellBlock = c.Stats.SpellBlock,
+                SpellBlockPerLevel = c.Stats.SpellblockperLevel,
                 HpRegen = c.Stats.HpRegen,
                 HpRegenPerLevel = c.Stats.HpregenperLevel,
                 MpRegen = c.Stats.MpRegen,
