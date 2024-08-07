@@ -72,6 +72,7 @@ public async Task<ActionResult<IEnumerable<ChampionDto>>> GetChampions()
                 HpRegen = c.Stats.HpRegen,
                 HpRegenPerLevel = c.Stats.HpregenperLevel,
                 MpRegen = c.Stats.MpRegen,
+                MpRegenPerLevel = c.Stats.MpregenperLevel,
                 Crit = c.Stats.Crit,
                 CritPerLevel = c.Stats.CritperLevel,
                 AttackDamage = c.Stats.AttackDamage,
