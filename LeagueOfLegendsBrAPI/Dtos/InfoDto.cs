@@ -7,4 +7,8 @@ namespace LeagueOfLegendsBrAPI.Dtos {
         public int? Difficulty { get; set; }
     }
 
+        public class InfoResDto : InfoDto
+    {
+        public string? ChampionName { get; set; }
+    }
 }

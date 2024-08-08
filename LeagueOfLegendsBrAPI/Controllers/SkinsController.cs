@@ -77,14 +77,14 @@ namespace LeagueOfLegendsBrAPI.Controllers
 
             var result = new Dictionary<string, List<SkinDto>>
             {
-                { 
+                {
                     championName, skins.Select(s => new SkinDto
                     {
                         Name = s.Name,
                         Splash = s.Splash,
                         Loading = s.Loading,
                         Model_view = s.Model_view
-                    }).ToList() 
+                    }).ToList()
                 }
             };
 

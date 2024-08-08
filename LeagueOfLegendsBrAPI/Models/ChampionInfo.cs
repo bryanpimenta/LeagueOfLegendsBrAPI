@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+
 namespace LeagueOfLegendsBrAPI.Models
 {
-
     public class ChampionInfo
     {
         public int? Id { get; set; }
