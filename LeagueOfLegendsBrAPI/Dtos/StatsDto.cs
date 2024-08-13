@@ -1,10 +1,11 @@
-namespace LeagueOfLegendsBrAPI.Dtos {
+namespace LeagueOfLegendsBrAPI.Dtos
+{
     public class StatsDto
     {
         public int? Hp { get; set; }
         public int? HpPerLevel { get; set; }
         public int? Mp { get; set; }
-        public int? MpPerLevel { get; set; }        
+        public int? MpPerLevel { get; set; }
         public int? MoveSpeed { get; set; }
         public int? Armor { get; set; }
         public int? ArmorPerLevel { get; set; }
@@ -21,5 +22,10 @@ namespace LeagueOfLegendsBrAPI.Dtos {
         public int? AttackDamagePerLevel { get; set; }
         public int? AttackSpeedPerLevel { get; set; }
         public int? AttackSpeed { get; set; }
+    }
+
+    public class StatsResDto : StatsDto
+    {
+        public string? ChampionName { get; set; }
     }
 }
