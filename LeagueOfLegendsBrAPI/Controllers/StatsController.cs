@@ -155,6 +155,12 @@ namespace LeagueOfLegendsBrAPI.Controllers
                     }).ToList()
                 }
             };
+
+            if (!result.Any())
+            {
+                return NotFound($"Nenhum campeão encontrado com o nome '{championName}'.");
+            }
+            
             return Ok(result);
         }
     }

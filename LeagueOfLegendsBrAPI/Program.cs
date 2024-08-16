@@ -1,12 +1,18 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LeagueOfLegendsBrAPI
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            string selectedDatabase = await DatabaseSelector.SelectDatabaseAsync();
+            DockerComposeUpdater.UpdateDockerCompose(selectedDatabase);
             CreateHostBuilder(args).Build().Run();
         }
 

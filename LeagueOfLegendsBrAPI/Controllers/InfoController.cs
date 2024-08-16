@@ -55,7 +55,7 @@ namespace LeagueOfLegendsBrAPI.Controllers
             return Ok(championsInfo);
         }
 
-        [HttpGet("byChampionName/{championName}")]
+        [HttpGet("byChampion/{championName}")]
         public async Task<ActionResult<IEnumerable<InfoResDto>>> GetChampionsInfoByName(string championName)
         {
             var championsInfo = await _context.ChampionInfo

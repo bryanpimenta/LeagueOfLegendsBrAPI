@@ -13,12 +13,10 @@ services:
       - ./database/patch_14.16.1.sql:/docker-entrypoint-initdb.d/patch_14.16.1.sql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
     restart: on-failure
-
   web:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
-
     volumes:
       - .:/app/publish
     working_dir: /app
@@ -31,6 +29,5 @@ services:
     ports:
       - "5050:5050"
     restart: on-failure
-
 volumes:
   db-data:
