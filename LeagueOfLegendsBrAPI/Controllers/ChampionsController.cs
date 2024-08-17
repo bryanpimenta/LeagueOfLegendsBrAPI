@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using LeagueOfLegendsBrAPI.Data;
 using LeagueOfLegendsBrAPI.Models;
 using LeagueOfLegendsBrAPI.Dtos;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/champions")]
     [ApiController]
     public class ChampionsController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace LeagueOfLegendsBrAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("test-connection")]
+        [HttpGet("test")]
         public async Task<IActionResult> TestConnection()
         {
             try
@@ -37,9 +37,8 @@ namespace LeagueOfLegendsBrAPI.Controllers
             }
         }
 
-
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ChampionDto>>> GetChampions()
+        public async Task<ActionResult<Dictionary<string, ChampionDto>>> GetChampions()
         {
             var champions = await _context.Champion
                 .Select(c => new ChampionDto
@@ -53,74 +52,18 @@ namespace LeagueOfLegendsBrAPI.Controllers
                     Image_full = c.Image_full,
                     Image_loading = c.Image_loading,
                     Image_square = c.Image_square,
-                    Info = new InfoDto
-                    {
-                        Attack = c.Info.Attack,
-                        Defense = c.Info.Defense,
-                        Magic = c.Info.Magic,
-                        Difficulty = c.Info.Difficulty
-                    },
-                    Stats = new StatsDto
-                    {
-                        Hp = c.Stats.Hp,
-                        HpPerLevel = c.Stats.HpperLevel,
-                        Mp = c.Stats.Mp,
-                        MpPerLevel = c.Stats.MpperLevel,
-                        MoveSpeed = c.Stats.MoveSpeed,
-                        AttackRange = c.Stats.AttackRange,
-                        Armor = c.Stats.Armor,
-                        ArmorPerLevel = c.Stats.ArmorperLevel,
-                        SpellBlock = c.Stats.SpellBlock,
-                        SpellBlockPerLevel = c.Stats.SpellblockperLevel,
-                        HpRegen = c.Stats.HpRegen,
-                        HpRegenPerLevel = c.Stats.HpregenperLevel,
-                        MpRegen = c.Stats.MpRegen,
-                        MpRegenPerLevel = c.Stats.MpregenperLevel,
-                        Crit = c.Stats.Crit,
-                        CritPerLevel = c.Stats.CritperLevel,
-                        AttackDamage = c.Stats.AttackDamage,
-                        AttackDamagePerLevel = c.Stats.AttackdamageperLevel,
-                        AttackSpeed = c.Stats.AttackSpeed,
-                        AttackSpeedPerLevel = c.Stats.AttackspeedperLevel
-                    },
-                    Passive = new PassiveDto
-                    {
-                        Name = c.Passive.Name,
-                        Description = c.Passive.Description,
-                        Image = c.Passive.Image
-                    },
-                    Spells = c.Spells.Select(s => new SpellDto
-                    {
-                        Key_board = s.Key_board,
-                        Name = s.Name,
-                        Description = s.Description,
-                        Image = s.Image
-                    }).ToList(),
-                    Skins = c.Skins.Select(s => new SkinDto
-                    {
-                        Name = s.Name,
-                        Splash = s.Splash,
-                        Loading = s.Loading,
-                        Model_view = s.Model_view
-                    }).ToList()
                 }).ToListAsync();
 
-            // Log the stats
-            /*     foreach (var champion in champions)
-                {
-                    _logger.LogInformation($"Champion: {champion.Name}, Stats: {JsonConvert.SerializeObject(champion.Stats)}");
-                } */
+            
+            var result = champions.ToDictionary(c => c.Name, c => c);
 
-            return champions;
+            return Ok(result);
         }
 
-        [HttpGet("byChampion/{championName}")]
-        public async Task<ActionResult<IEnumerable<ChampionDto>>> GetChampionsByName(string championName)
+        [HttpGet("{championName}")]
+        public async Task<ActionResult<Dictionary<string, ChampionDto>>> GetChampionByName(string championName)
         {
-            if (string.IsNullOrWhiteSpace(championName))
-            {
-                return BadRequest("O nome do campeão não pode ser vazio.");
-            }
+            championName = char.ToUpper(championName.ToLower()[0]) + championName.Substring(1).ToLower();
 
             var champions = await _context.Champion
                 .Where(c => c.Name.Contains(championName, StringComparison.OrdinalIgnoreCase))
@@ -135,64 +78,17 @@ namespace LeagueOfLegendsBrAPI.Controllers
                     Image_full = c.Image_full,
                     Image_loading = c.Image_loading,
                     Image_square = c.Image_square,
-                    Info = new InfoDto
-                    {
-                        Attack = c.Info.Attack,
-                        Defense = c.Info.Defense,
-                        Magic = c.Info.Magic,
-                        Difficulty = c.Info.Difficulty
-                    },
-                    Stats = new StatsDto
-                    {
-                        Hp = c.Stats.Hp,
-                        HpPerLevel = c.Stats.HpperLevel,
-                        Mp = c.Stats.Mp,
-                        MpPerLevel = c.Stats.MpperLevel,
-                        MoveSpeed = c.Stats.MoveSpeed,
-                        AttackRange = c.Stats.AttackRange,
-                        Armor = c.Stats.Armor,
-                        ArmorPerLevel = c.Stats.ArmorperLevel,
-                        SpellBlock = c.Stats.SpellBlock,
-                        SpellBlockPerLevel = c.Stats.SpellblockperLevel,
-                        HpRegen = c.Stats.HpRegen,
-                        HpRegenPerLevel = c.Stats.HpregenperLevel,
-                        MpRegen = c.Stats.MpRegen,
-                        MpRegenPerLevel = c.Stats.MpregenperLevel,
-                        Crit = c.Stats.Crit,
-                        CritPerLevel = c.Stats.CritperLevel,
-                        AttackDamage = c.Stats.AttackDamage,
-                        AttackDamagePerLevel = c.Stats.AttackdamageperLevel,
-                        AttackSpeed = c.Stats.AttackSpeed,
-                        AttackSpeedPerLevel = c.Stats.AttackspeedperLevel
-                    },
-                    Passive = new PassiveDto
-                    {
-                        Name = c.Passive.Name,
-                        Description = c.Passive.Description,
-                        Image = c.Passive.Image
-                    },
-                    Spells = c.Spells.Select(s => new SpellDto
-                    {
-                        Key_board = s.Key_board,
-                        Name = s.Name,
-                        Description = s.Description,
-                        Image = s.Image
-                    }).ToList(),
-                    Skins = c.Skins.Select(s => new SkinDto
-                    {
-                        Name = s.Name,
-                        Splash = s.Splash,
-                        Loading = s.Loading,
-                        Model_view = s.Model_view
-                    }).ToList()
                 }).ToListAsync();
 
-            if (!champions.Any())
+            
+            var result = champions.ToDictionary(c => c.Name, c => c);
+
+            if (!result.Any())
             {
                 return NotFound($"Nenhum campeão encontrado com o nome '{championName}'.");
             }
 
-            return Ok(champions);
+            return Ok(result);
         }
     }
 }

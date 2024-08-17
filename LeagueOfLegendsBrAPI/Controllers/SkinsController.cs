@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/skins")]
     [ApiController]
     public class ChampionSkinController : ControllerBase
     {
@@ -55,9 +55,11 @@ namespace LeagueOfLegendsBrAPI.Controllers
         }
 
 
-        [HttpGet("byChampion/{championName}")]
+        [HttpGet("{championName}")]
         public async Task<ActionResult<Dictionary<string, List<SkinDto>>>> GetSkinsByChampion(string championName)
         {
+            championName = char.ToUpper(championName.ToLower()[0]) + championName.Substring(1).ToLower();
+
             var skins = await _context.ChampionSkin
                 .Where(s => s.Champion.Name == championName)
                 .Select(s => new SkinResDto
@@ -72,7 +74,7 @@ namespace LeagueOfLegendsBrAPI.Controllers
 
             if (!skins.Any())
             {
-                return NotFound();
+                return NotFound(new { Message = "Champion not found." });
             }
 
             var result = new Dictionary<string, List<SkinDto>>
@@ -87,6 +89,11 @@ namespace LeagueOfLegendsBrAPI.Controllers
                     }).ToList()
                 }
             };
+
+            if (!result.Any())
+            {
+                return NotFound(new { Message = "Champion not found." });
+            }
 
             return Ok(result);
         }

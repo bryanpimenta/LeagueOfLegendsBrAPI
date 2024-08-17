@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/info")]
     [ApiController]
     public class ChampionInfoController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace LeagueOfLegendsBrAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("test-connection")]
+        [HttpGet("test")]
         public async Task<IActionResult> TestConnection()
         {
             try
@@ -38,8 +38,9 @@ namespace LeagueOfLegendsBrAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InfoResDto>>> GetChampionsInfo()
+        public async Task<ActionResult<IEnumerable<InfoDto>>> GetChampionsInfo()
         {
+            
             var championsInfo = await _context.ChampionInfo
                 .Include(ci => ci.Champion)
                 .Select(c => new InfoResDto
@@ -52,18 +53,33 @@ namespace LeagueOfLegendsBrAPI.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(championsInfo);
+            var result = championsInfo
+                .GroupBy(c => c.ChampionName)
+                .ToDictionary(
+                g => g.Key,
+                g => g.Select(c => new InfoDto
+                {
+                    Attack = c.Attack,
+                    Defense = c.Defense,
+                    Magic = c.Magic,
+                    Difficulty = c.Difficulty
+                }).ToList()
+            );
+
+            return Ok(result);
         }
 
-        [HttpGet("byChampion/{championName}")]
-        public async Task<ActionResult<IEnumerable<InfoResDto>>> GetChampionsInfoByName(string championName)
+
+        [HttpGet("{championName}")]
+        public async Task<ActionResult<Dictionary<string, List<InfoDto>>>> GetChampionsInfoByName(string championName)
         {
+            championName = char.ToUpper(championName.ToLower()[0]) + championName.Substring(1).ToLower();
+
             var championsInfo = await _context.ChampionInfo
                 .Include(ci => ci.Champion)
                 .Where(c => c.Champion.Name.Equals(championName, StringComparison.OrdinalIgnoreCase))
-                .Select(c => new InfoResDto
+                .Select(c => new InfoDto
                 {
-                    ChampionName = c.Champion.Name,
                     Attack = c.Attack,
                     Defense = c.Defense,
                     Magic = c.Magic,
@@ -76,7 +92,12 @@ namespace LeagueOfLegendsBrAPI.Controllers
                 return NotFound(new { Message = "Champion not found." });
             }
 
-            return Ok(championsInfo);
+            var result = new Dictionary<string, List<InfoDto>>
+            {
+                { championName, championsInfo }
+            };
+
+            return Ok(result);
         }
 
     }

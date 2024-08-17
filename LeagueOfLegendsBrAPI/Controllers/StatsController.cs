@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/stats")]
     [ApiController]
     public class ChampionStatsController : ControllerBase
     {
@@ -90,9 +90,11 @@ namespace LeagueOfLegendsBrAPI.Controllers
             return Ok(groupedStats);
         }
 
-        [HttpGet("byChampion/{championName}")]
+        [HttpGet("{championName}")]
         public async Task<ActionResult<Dictionary<string, List<StatsDto>>>> GetStatsByChampion(string championName)
         {
+            championName = char.ToUpper(championName.ToLower()[0]) + championName.Substring(1).ToLower();
+
             var stats = await _context.ChampionStats
                 .Include(s => s.Champion)
                 .Where(s => s.Champion.Name == championName)
