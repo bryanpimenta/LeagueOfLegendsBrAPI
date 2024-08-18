@@ -34,21 +34,26 @@ cd LeagueOfLegendsBrAPI
 dotnet run
 ```
 
-A API estará disponível em `http://localhost:5050`.
+A API estará disponível em:
+`http://localhost:5050`
 
 Configurando o Banco de Dados
 Verifique se o MySQL está rodando e configure a string de conexão no arquivo `appsettings.json`.
 
-# Com Docker
-Rode o comando 
+# Docker
+Rode o comando:
+
 ```docker-compose up --build```
+
 Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupações com outras configurações. 
 
-## Subindo apenas o SQL
-Otimo para testar querys e views do banco
+## Subindo apenas o SQL com Docker
+Ótimo para testar querys e views do banco:
+
 ```docker-compose up db --build```
 
-### Detalhe: para subir o banco apenas e ainda rodar o app separado, em `appsettings.json` coloque `server=localhost`
+### Detalhe: 
+Para subir o banco de dados apenas e rodar LeagueOfLegendsBrAPI separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de db.
 
 ## Uso
 Documentação da API
