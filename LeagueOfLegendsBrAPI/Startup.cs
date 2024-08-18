@@ -1,5 +1,6 @@
 using LeagueOfLegendsBrAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 public class Startup
 {
@@ -26,6 +27,12 @@ public class Startup
         });
     });
 
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "LeagueOfLegendsBrAPI", Version = "v1" });
+        }
+        );
+
         services.AddControllers();
     }
 
@@ -35,7 +42,14 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
         }
-            app.UseCors("AllowAllOrigins");
+
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "LeagueOfLegendsBrAPI");
+        });
+
+        app.UseCors("AllowAllOrigins");
 
         app.UseRouting();
 
