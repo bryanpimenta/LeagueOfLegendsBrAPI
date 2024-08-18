@@ -13,6 +13,7 @@ services:
       - ./database/patch_14.16.1.sql:/docker-entrypoint-initdb.d/patch_14.16.1.sql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
     restart: on-failure
+
   web:
     build:
       context: .
@@ -26,7 +27,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__LeagueOfLegendsDatabase: "Server=db;Database=LeagueOfLegendsDataBase;User=root;Password=${MYSQL_ROOT_PASSWORD};"
-      labels:
+    labels:
       - "traefik.enable=true"
       - "traefik.http.routers.web.rule=Host(`leagueoflegendsbr.site`)"
       - "traefik.http.routers.web.rule=Host(`app.leagueoflegendsbr.site`)"
