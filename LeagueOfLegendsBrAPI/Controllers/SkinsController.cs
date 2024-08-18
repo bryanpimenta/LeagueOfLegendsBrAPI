@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/skins")]
+    [Route("api/v1/skins")]
     [ApiController]
     public class ChampionSkinController : ControllerBase
     {
