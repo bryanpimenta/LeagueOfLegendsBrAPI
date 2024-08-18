@@ -44,14 +44,18 @@ Verifique se o MySQL está rodando e configure a string de conexão no arquivo `
 # Docker
 Rode o comando:
 
-```docker-compose up --build```
+```
+docker-compose up --build
+```
 
 Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupações com outras configurações. 
 
 ## Subindo apenas o SQL com Docker
 Ótimo para testar querys e views do banco:
 
-```docker-compose up db --build```
+```
+docker-compose up db --build
+```
 
 ### Detalhe: 
 Para subir o banco de dados apenas e rodar LeagueOfLegendsBrAPI separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de db.
