@@ -23,23 +23,29 @@ cd LeagueOfLegendsBrAPI
 ```
 
 Restaurando Dependências
-```dotnet restore```
+```
+cd LeagueOfLegendsBrAPI
+dotnet restore
+```
 
 Rodando a Aplicação
-```dotnet run```
+```
+cd LeagueOfLegendsBrAPI
+dotnet run
+```
 
-A API estará disponível em http://localhost:5000.
+A API estará disponível em `http://localhost:5050`.
 
 Configurando o Banco de Dados
-Verifique se o MySQL está rodando e configure a string de conexão no arquivo appsettings.json.
+Verifique se o MySQL está rodando e configure a string de conexão no arquivo `appsettings.json`.
 
-Opcionalmente, use o Docker para rodar o banco de dados. Certifique-se de configurar o docker-compose.yml adequadamente:
-```docker-compose up -d```
+# Com Docker
+Rode o comando 
+````docker-compose up --build```
+Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupações com outras configurações. 
 
 
-Uso
+## Uso
 Documentação da API
 Após rodar a aplicação, você pode acessar a documentação interativa da API gerada pelo Swagger:
-```http://localhost:5000/swagger```
-
-Ele trás todas rotas da API.
+```http://localhost:5050/swagger```
