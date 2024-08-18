@@ -41,9 +41,14 @@ Verifique se o MySQL está rodando e configure a string de conexão no arquivo `
 
 # Com Docker
 Rode o comando 
-````docker-compose up --build```
+```docker-compose up --build```
 Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupações com outras configurações. 
 
+## Subindo apenas o SQL
+Otimo para testar querys e views do banco
+```docker-compose up db --build```
+
+### Detalhe: para subir o banco apenas e ainda rodar o app separado, em `appsettings.json` coloque `server=localhost`
 
 ## Uso
 Documentação da API
