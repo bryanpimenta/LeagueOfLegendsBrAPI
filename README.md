@@ -10,7 +10,8 @@ Este projeto tem como objetivo criar um Get de informações para fornecer dados
 - Docker
 - MySQL
 - Entity Framework Core
-- Requisitos
+
+## Requisitos
 - .NET SDK 8.0 ou superior
 - Docker (opcional, para execução em container)
 - MySQL
