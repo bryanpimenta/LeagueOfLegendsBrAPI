@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Dotenv.Net;
 
 namespace LeagueOfLegendsBrAPI
 {
@@ -11,6 +12,7 @@ namespace LeagueOfLegendsBrAPI
     {
         static async Task Main(string[] args)
         {
+            Dotenv.Load();
             string selectedDatabase = await DatabaseSelector.SelectDatabaseAsync();
             DockerComposeUpdater.UpdateDockerCompose(selectedDatabase);
             CreateHostBuilder(args).Build().Run();
