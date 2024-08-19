@@ -25,6 +25,7 @@ services:
     depends_on:
       - db
     environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__LeagueOfLegendsDatabase: "Server=db;Database=LeagueOfLegendsDataBase;User=root;Password=${MYSQL_ROOT_PASSWORD};"
     ports:
