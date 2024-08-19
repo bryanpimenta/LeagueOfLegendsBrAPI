@@ -1,6 +1,7 @@
 using LeagueOfLegendsBrAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using DotEnvGoogle;
 
 public class Startup
 {
@@ -13,8 +14,21 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        DotEnv.Load();
+
+        var connectionString = string.Format(
+        Configuration.GetConnectionString("LeagueOfLegendsDatabase"),
+        Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD"));
+
         services.AddDbContext<LeagueOfLegendsContext>(options =>
-            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySQL(connectionString));
+
+        services.AddDbContext<LeagueOfLegendsContext>(options =>
+        {
+            var connectionString = $"Server=db;Database=LeagueOfLegendsDataBase;User=root;Password={Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD")};";
+            options.UseMySQL(connectionString);
+        });
+
 
         services.AddCors(options =>
     {
