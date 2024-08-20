@@ -2,6 +2,12 @@ using LeagueOfLegendsBrAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using DotEnvGoogle;
+using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 public class Startup
 {
@@ -47,6 +53,13 @@ public class Startup
         }
         );
 
+        services.AddInMemoryRateLimiting();
+        services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));
+        services.Configure<IpRateLimitPolicies>(Configuration.GetSection("IpRateLimitPolicies"));
+        services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+        services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+        
+
         services.AddControllers();
     }
 
@@ -64,6 +77,10 @@ public class Startup
         });
 
         app.UseCors("AllowAllOrigins");
+
+        app.UseIpRateLimiting();
+
+        app.UseMiddleware<RateLimitingMiddleware>();
 
         app.UseRouting();
 
