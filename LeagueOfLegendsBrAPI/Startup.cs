@@ -53,12 +53,15 @@ public class Startup
         }
         );
 
+        services.AddMemoryCache();
         services.AddInMemoryRateLimiting();
         services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));
-        services.Configure<IpRateLimitPolicies>(Configuration.GetSection("IpRateLimitPolicies"));
+        services.Configure<IpRateLimitPolicies>(Configuration.GetSection("IpRateLimitingPolicies"));
         services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
         services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
-        
+        services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+
 
         services.AddControllers();
     }
