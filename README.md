@@ -51,7 +51,7 @@ Para subir o banco de dados e rodar `LeagueOfLegendsBrAPI` separado, abra o `app
 </br></br>
 # Docker
 Certifique-se de ter instalado o Docker e o Docker-Compose.
-</br>
+</br></br>
 Subindo os Containers:
 ```
 docker-compose up --build
