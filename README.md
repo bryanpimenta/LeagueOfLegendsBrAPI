@@ -50,8 +50,9 @@ A API estará disponível em:
 Para subir o banco de dados e rodar `LeagueOfLegendsBrAPI` separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db` e siga a orientação mais abaixo de como subir apenas o container do banco de dados.
 </br></br>
 # Docker
-Rode o comando:
-
+Certifique-se de ter instalado o Docker e o Docker-Compose.
+</br>
+Subindo os Containers:
 ```
 docker-compose up --build
 ```
