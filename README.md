@@ -18,7 +18,8 @@ Este projeto tem como objetivo criar um Get de informações para fornecer dados
 
 # Deploy
 Aqui você encontra todas rotas documentadas: <a href="https://app.leagueoflegendsbr.site/swagger/index.html" target="__blank">app.leagueoflegendsbr.site/swagger<a> </br>
-Não abuse de nossa querida API, ela é pequena e tem limite de 25 req por minuto, agradeço a compreensão :)
+</br>
+<i>Não abuse de nossa querida API, ela é pequena e tem limite de 25 req por minuto, agradeço a compreensão :)</i>
 
 # Instalação
 Clonando o Repositório
@@ -27,7 +28,7 @@ git clone https://github.com/bryanpimenta/LeagueOfLegendsBrAPI.git
 cd LeagueOfLegendsBrAPI
 ```
 
-Restaurando Dependências
+Instalando Dependências
 ```
 cd LeagueOfLegendsBrAPI
 dotnet restore
@@ -42,8 +43,8 @@ dotnet run
 A API estará disponível em:
 `http://localhost:5050`
 
-Configurando o Banco de Dados
-Verifique se o MySQL está rodando e configure a string de conexão no arquivo `appsettings.json`.
+### Detalhe para rodar apenas a aplicação: 
+Para subir o banco de dados e rodar `LeagueOfLegendsBrAPI` separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db` e siga a orientação mais abaixo de como subir apenas o container do banco de dados.
 
 # Docker
 Rode o comando:
@@ -61,8 +62,8 @@ Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupaç�
 docker-compose up db --build
 ```
 
-### Detalhe para rodar apenas a aplicação: 
-Para subir o banco de dados apenas e rodar LeagueOfLegendsBrAPI separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db`.
+Configurando o Banco de Dados
+Verifique se o MySQL está rodando e configure a string de conexão no arquivo `appsettings.json`.
 
 ## Uso
 Documentação da API
