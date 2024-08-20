@@ -18,8 +18,9 @@ Este projeto tem como objetivo criar um `GET` de informações para fornecer dad
 - MySQL
 
 # Deploy
-Utilizei o serviço da Google Cloud de maquina virtual EC2.
-</br>
+
+Utilizei o serviço da <a href="https://cloud.google.com/products/compute?hl=pt-BR" target="__blank">Google Cloud Compute Engine<a>.
+</br></br>
 Aqui você encontra todas rotas documentadas: <a href="https://app.leagueoflegendsbr.site/swagger/index.html" target="__blank">app.leagueoflegendsbr.site/swagger<a> </br>
 </br>
 <i>Não abuse de nossa querida API, ela é pequena e tem limite de 25 req por minuto, agradeço a compreensão :)</i>
