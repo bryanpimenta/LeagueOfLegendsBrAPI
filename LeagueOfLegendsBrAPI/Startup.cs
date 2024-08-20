@@ -83,6 +83,8 @@ public class Startup
 
         app.UseMiddleware<RateLimitingMiddleware>();
 
+        app.UseIpRateLimiting();
+
         app.UseRouting();
 
         app.UseAuthorization();
