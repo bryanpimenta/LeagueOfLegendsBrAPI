@@ -30,6 +30,7 @@ $RECYCLE.BIN/
 
 # JetBrains Rider
 .idea/
+.env
 
 # Rider logs
 *.iws
