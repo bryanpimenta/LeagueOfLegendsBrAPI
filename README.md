@@ -3,21 +3,21 @@
 Está é uma API em C# que fornece informações sobre campeões do jogo League of Legends.
 
 Este projeto tem como objetivo criar um `GET` de informações para fornecer dados detalhados sobre os campeões do League of Legends, como atributos, habilidades e skins. A API permite consultas por nome do campeão, além de fornecer os dados em uma estrutura organizada e de fácil utilização.
-
-## Tecnologias Utilizadas
+</br></br>
+## ⚙ Tecnologias Utilizadas
 - C#
 - ASP.NET Core
 - Swashbuckle.AspNetCore (para documentação do Swagger)
 - Docker
 - MySQL
 - Entity Framework Core
-
-## Requisitos
+</br></br>
+## 📑 Requisitos
 - .NET SDK 8.0 ou superior
 - Docker (opcional, para execução em container)
 - MySQL
-
-# Deploy
+</br></br>
+# ☁ Deploy
 
 Utilizei o serviço da <a href="https://cloud.google.com/products/compute?hl=pt-BR" target="_blank">Google Cloud Compute Engine</a>.
 </br></br>
@@ -25,9 +25,9 @@ Deploy --> <a href="https://app.leagueoflegendsbr.site/swagger/index.html" targe
 
 </br>
 <i>Não abuse de nossa querida API, ela é pequena e tem limite de 25 req por minuto, agradeço a compreensão :)</i>
-</br>
+</br></br>
 
-# Instalação
+# ⚙ Instalação
 Clonando o Repositório
 ```
 git clone https://github.com/bryanpimenta/LeagueOfLegendsBrAPI.git
@@ -50,10 +50,10 @@ A API estará disponível em:
 `http://localhost:5050`
 </br></br>
 
-#### Detalhe para rodar apenas a aplicação: 
-Para subir o banco de dados e rodar `LeagueOfLegendsBrAPI` separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db` e siga a orientação mais abaixo de como subir apenas o container do banco de dados.
+#### 🧷 Detalhe: 
+Para rodar apenas a aplicação, rode a aplicação `LeagueOfLegendsBrAPI`, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db` e siga a orientação mais abaixo de como subir apenas o container do banco de dados.
 </br></br>
-# Docker
+# 🐳 Docker
 Certifique-se de ter instalado o Docker e o Docker-Compose.
 </br></br>
 Subindo os Containers:
