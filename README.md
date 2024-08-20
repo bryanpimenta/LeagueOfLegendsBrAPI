@@ -16,6 +16,10 @@ Este projeto tem como objetivo criar um Get de informações para fornecer dados
 - Docker (opcional, para execução em container)
 - MySQL
 
+# Deploy
+Aqui você encontra todas rotas documentadas: <a href="https://app.leagueoflegendsbr.site/swagger/index.html" target="__blank">app.leagueoflegendsbr.site/swagger<a> </br>
+Não abuse de nossa querida API, ela é pequena e tem limite de 25 req por minuto, agradeço a compreensão :)
+
 # Instalação
 Clonando o Repositório
 ```
@@ -57,8 +61,8 @@ Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupaç�
 docker-compose up db --build
 ```
 
-### Detalhe: 
-Para subir o banco de dados apenas e rodar LeagueOfLegendsBrAPI separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de db.
+### Detalhe para rodar apenas a aplicação: 
+Para subir o banco de dados apenas e rodar LeagueOfLegendsBrAPI separado, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db`.
 
 ## Uso
 Documentação da API
