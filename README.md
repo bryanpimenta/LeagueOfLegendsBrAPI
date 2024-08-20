@@ -1,7 +1,7 @@
-# LeagueOfLegendsBrAPI
-`LeagueOfLegendsBrAPI` é uma API em C# que fornece informações sobre campeões do jogo League of Legends.
+<img src="./img/API.png"><img>
+# `LeagueOfLegendsBrAPI` é uma API em C# que fornece informações sobre campeões do jogo League of Legends.
 
-Este projeto tem como objetivo criar um Get de informações para fornecer dados detalhados sobre os campeões do League of Legends, como atributos, habilidades e skins. A API permite consultas por nome do campeão, além de fornecer os dados em uma estrutura organizada e de fácil utilização.
+Este projeto tem como objetivo criar um `GET` de informações para fornecer dados detalhados sobre os campeões do League of Legends, como atributos, habilidades e skins. A API permite consultas por nome do campeão, além de fornecer os dados em uma estrutura organizada e de fácil utilização.
 
 ## Tecnologias Utilizadas
 - C#
