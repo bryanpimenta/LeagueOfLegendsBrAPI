@@ -81,9 +81,9 @@ public class Startup
 
         app.UseCors("AllowAllOrigins");
 
-        app.UseIpRateLimiting();
-
         app.UseMiddleware<RateLimitingMiddleware>();
+
+        app.UseIpRateLimiting();
 
         app.UseRouting();
 

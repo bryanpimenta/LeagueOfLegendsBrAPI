@@ -24,7 +24,7 @@ public class RateLimitingMiddleware
             context.Response.ContentType = "application/json";
             var response = new
             {
-                message = "Você fez muitas requisições. Por favor, aguarde e tente novamente mais tarde."
+                message = "Limite de Request excedido. Espere 1 minuto e tente novamente. Agradeço :)"
             };
             await context.Response.WriteAsJsonAsync(response);
         }
