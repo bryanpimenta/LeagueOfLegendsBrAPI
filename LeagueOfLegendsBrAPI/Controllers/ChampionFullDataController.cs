@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/championsFullData")]
+    [Route("api/v1/champions/full")]
     [ApiController]
     public class ChampionsFullDataController : ControllerBase
     {

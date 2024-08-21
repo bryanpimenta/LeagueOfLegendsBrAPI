@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LeagueOfLegendsBrAPI.Controllers
 {
-    [Route("api/stats")]
+    [Route("api/v1/stats")]
     [ApiController]
     public class ChampionStatsController : ControllerBase
     {

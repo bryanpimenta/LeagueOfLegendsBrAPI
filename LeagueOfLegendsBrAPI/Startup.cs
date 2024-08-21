@@ -1,6 +1,13 @@
 using LeagueOfLegendsBrAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using DotEnvGoogle;
+using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 public class Startup
 {
@@ -13,8 +20,21 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        DotEnv.Load();
+
+        var connectionString = string.Format(
+        Configuration.GetConnectionString("LeagueOfLegendsDatabase"),
+        Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD"));
+
         services.AddDbContext<LeagueOfLegendsContext>(options =>
-            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySQL(connectionString));
+
+        services.AddDbContext<LeagueOfLegendsContext>(options =>
+        {
+            var connectionString = $"Server=db;Database=LeagueOfLegendsDataBase;User=root;Password={Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD")};";
+            options.UseMySQL(connectionString);
+        });
+
 
         services.AddCors(options =>
     {
@@ -33,6 +53,16 @@ public class Startup
         }
         );
 
+        services.AddMemoryCache();
+        services.AddInMemoryRateLimiting();
+        services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));
+        services.Configure<IpRateLimitPolicies>(Configuration.GetSection("IpRateLimitingPolicies"));
+        services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+        services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+        services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+
+
         services.AddControllers();
     }
 
@@ -50,6 +80,10 @@ public class Startup
         });
 
         app.UseCors("AllowAllOrigins");
+
+        app.UseMiddleware<RateLimitingMiddleware>();
+
+        app.UseIpRateLimiting();
 
         app.UseRouting();
 

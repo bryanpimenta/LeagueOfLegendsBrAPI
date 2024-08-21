@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
+using DotEnvGoogle;
 
 namespace LeagueOfLegendsBrAPI
 {
@@ -11,6 +10,7 @@ namespace LeagueOfLegendsBrAPI
     {
         static async Task Main(string[] args)
         {
+            DotEnv.Load();
             string selectedDatabase = await DatabaseSelector.SelectDatabaseAsync();
             DockerComposeUpdater.UpdateDockerCompose(selectedDatabase);
             CreateHostBuilder(args).Build().Run();

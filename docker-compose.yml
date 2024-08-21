@@ -1,8 +1,10 @@
 services:
   db:
     image: mysql:8.0
+    env_file:
+      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: killjoy
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: LeagueOfLegendsDataBase
       LANG: C.UTF-8
       LC_ALL: C.UTF-8
@@ -21,11 +23,14 @@ services:
       - .:/app/publish
     working_dir: /app
     command: dotnet watch run
+    env_file:
+      - .env
     depends_on:
       - db
     environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__LeagueOfLegendsDatabase: "Server=db;Database=LeagueOfLegendsDataBase;User=root;Password=killjoy;"
+      ConnectionStrings__LeagueOfLegendsDatabase: "Server=db;Database=LeagueOfLegendsDataBase;User=root;Password=${MYSQL_ROOT_PASSWORD};"
     ports:
       - "5050:5050"
     restart: on-failure
