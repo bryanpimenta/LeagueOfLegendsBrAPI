@@ -55,7 +55,7 @@ você pode acessar a documentação interativa da API gerada pelo Swagger:
 ```
 http://localhost:5050/swagger
 ```
-</br></br>
+</br>
 
 #### 🧷 Detalhe: 
 Para executar apenas a aplicação, siga os passos abaixo:
