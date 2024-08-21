@@ -47,11 +47,23 @@ dotnet run
 ```
 
 A API estará disponível em:
-`http://localhost:5050`
+```
+http://localhost:5050
+```
+
+você pode acessar a documentação interativa da API gerada pelo Swagger:
+```
+http://localhost:5050/swagger
+```
 </br></br>
 
 #### 🧷 Detalhe: 
-Para rodar apenas a aplicação, rode a aplicação `LeagueOfLegendsBrAPI`, abra o `appsettings.json` e coloque `server=localhost` ao invez de `db` e siga a orientação mais abaixo de como subir apenas o container do banco de dados.
+Para executar apenas a aplicação, siga os passos abaixo:
+
+- Abra o arquivo `appsettings.json` localizado no diretório do projeto.
+- Substitua o valor de `server` para `localhost` no lugar de `db`.
+- Siga as instruções abaixo para iniciar apenas o container do banco de dados.
+
 </br></br>
 # 🐳 Docker
 Certifique-se de ter instalado o Docker e o Docker-Compose.
@@ -76,7 +88,3 @@ Verifique se o MySQL está rodando e configure a string de conexão no arquivo `
 ## Do Banco de dados SQL
 O banco de dados é montado apartir do meu outro repo: <a href="https://github.com/bryanpimenta/league-of-legends-database" target="_blank">league-of-legends-database<a>
 </br></br>
-## Uso
-Documentação da API
-Após rodar a aplicação, você pode acessar a documentação interativa da API gerada pelo Swagger:
-```http://localhost:5050/swagger```
