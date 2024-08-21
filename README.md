@@ -82,7 +82,7 @@ Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupaç�
 docker-compose up db --build
 ```
 
-Configurando o Banco de Dados
+Configurando o Banco de Dados </br>
 Verifique se o MySQL está rodando e configure a string de conexão no arquivo `appsettings.json`.
 </br></br>
 ## Do Banco de dados SQL
