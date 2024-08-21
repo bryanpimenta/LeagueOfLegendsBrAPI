@@ -80,6 +80,7 @@ Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupaç�
 docker-compose up db --build
 ```
 </br>
+
 ## Do Banco de dados SQL
 O banco de dados é montado apartir do meu outro repo: <a href="https://github.com/bryanpimenta/league-of-legends-database" target="_blank">league-of-legends-database<a>
 </br></br>
