@@ -56,14 +56,12 @@ você pode acessar a documentação interativa da API gerada pelo Swagger:
 http://localhost:5050/swagger
 ```
 </br>
-
-#### 🧷 Detalhe: 
+🧷 Detalhe: 
 Para executar apenas a aplicação, siga os passos abaixo:
 
 - Abra o arquivo `appsettings.json` localizado no diretório do projeto.
 - Substitua o valor de `server` para `localhost` no lugar de `db`.
 - Siga as instruções abaixo para iniciar apenas o container do banco de dados.
-
 </br></br>
 # 🐳 Docker
 Certifique-se de ter instalado o Docker e o Docker-Compose.
@@ -81,8 +79,7 @@ Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupaç�
 ```
 docker-compose up db --build
 ```
-
-</br></br>
+</br>
 ## Do Banco de dados SQL
 O banco de dados é montado apartir do meu outro repo: <a href="https://github.com/bryanpimenta/league-of-legends-database" target="_blank">league-of-legends-database<a>
 </br></br>
