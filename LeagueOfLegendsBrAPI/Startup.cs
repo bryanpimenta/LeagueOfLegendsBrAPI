@@ -13,25 +13,31 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        string? connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new InvalidOperationException("A string de conexão 'DefaultConnection' não está configurada.");
+        }
+
         services.AddDbContext<LeagueOfLegendsContext>(options =>
-            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySQL(connectionString));
 
         services.AddCors(options =>
-    {
-        options.AddPolicy("AllowAllOrigins", builder =>
         {
-            builder
+            options.AddPolicy("AllowAllOrigins", builder =>
+            {
+                builder
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader();
+            });
         });
-    });
 
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "LeagueOfLegendsBrAPI", Version = "v1" });
-        }
-        );
+        });
 
         services.AddControllers();
     }

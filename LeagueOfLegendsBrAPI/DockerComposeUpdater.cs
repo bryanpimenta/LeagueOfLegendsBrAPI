@@ -4,11 +4,24 @@ using System.Linq;
 
 namespace LeagueOfLegendsBrAPI
 {
+    /// <summary>
+    /// Classe que atualiza o arquivo Docker Compose com um novo arquivo de banco de dados puxado do repo de databases.
+    /// </summary>
     public static class DockerComposeUpdater
     {
+        /// <summary>
+        /// Atualiza o arquivo Docker Compose, substituindo o banco de dados 
+        /// com base nos nomes fornecidos.
+        /// </summary>
+        /// <param name="databaseFileName">
+        /// O caminho completo ou o nome do arquivo de banco de dados a ser incluído no arquivo Docker Compose.
+        /// </param>
+        /// <remarks>
+        /// Este método busca o arquivo docker-compose.yml em caminhos predefinidos, atualiza o mapeamento do volume 
+        /// do banco de dados com o novo nome de arquivo e salva as alterações.
+        /// </remarks>
         public static void UpdateDockerCompose(string databaseFileName)
         {
-
             string[] possiblePaths = {
                 Path.Combine(Directory.GetCurrentDirectory(), "../docker-compose.yml"),
                 "/app/docker-compose.yml"
@@ -60,3 +73,4 @@ namespace LeagueOfLegendsBrAPI
         }
     }
 }
+

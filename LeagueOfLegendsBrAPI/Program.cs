@@ -11,8 +11,16 @@ namespace LeagueOfLegendsBrAPI
     {
         static async Task Main(string[] args)
         {
-            string selectedDatabase = await DatabaseSelector.SelectDatabaseAsync();
+            string? selectedDatabase = await DatabaseSelector.SelectDatabaseAsync();
+            
+            if (selectedDatabase == null)
+            {
+                Console.WriteLine("Nenhum banco de dados selecionado. A aplicação será encerrada.");
+                return;
+            }
+
             DockerComposeUpdater.UpdateDockerCompose(selectedDatabase);
+
             CreateHostBuilder(args).Build().Run();
         }
 
