@@ -73,7 +73,7 @@ docker-compose up --build
 
 Tanto a aplicação quanto o banco de dados serão orquestrados, sem preocupações com outras configurações. 
 </br></br>
-## Subindo apenas o SQL com Docker
+## Subindo apenas Banco de dados no SQL com Docker
 Ótimo para testar querys e views do banco:
 
 ```
