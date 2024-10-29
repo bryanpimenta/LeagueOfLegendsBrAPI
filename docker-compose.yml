@@ -12,7 +12,7 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
-      - ./database/patch_14.20.1.sql:/docker-entrypoint-initdb.d/patch_14.20.1.sql
+      - ./database/patch_14.21.1.sql:/docker-entrypoint-initdb.d/patch_14.21.1.sql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
     restart: on-failure
   web:
